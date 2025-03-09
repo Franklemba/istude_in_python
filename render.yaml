@@ -1,12 +1,6 @@
-
 services:
   - type: web
     name: istude_in_python
     env: python
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn app:app
-    instanceCount: 1
-    instanceSize: free
-    region: us-east-1
-    domain: istude_in_python.onrender.com
-    healthCheckPath: /
