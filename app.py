@@ -3,10 +3,11 @@ from config import Config
 from models.database import db
 from routes import home_bp, about_bp, contact_bp
 from dotenv import load_dotenv
-import pymysql
 
+# local database configuration
+# import pymysql
 
-pymysql.install_as_MySQLdb()
+# pymysql.install_as_MySQLdb()
 
 load_dotenv()
 
