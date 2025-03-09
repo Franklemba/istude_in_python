@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %} My Website {% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_head %}{% endblock %}
+    
+</head>
+
+<body>
+    <header>
+          <nav>
+            <ul>
+                <li><a href="{{ url_for('home.home') }}">Home</a></li>
+                <li><a href="{{ url_for('about.about') }}">About</a></li>
+                <li><a href="{{ url_for('contact.contact') }}">Contact</a></li>
+                <li><a href="{{ url_for('contact.view_messages') }}">Messages</a></li>
+            </ul>
+          </nav>
+    </header>
+    <main>
+        {% with messages = get_flashed_messages()%}
+            {% if messages %}
+                <div class="flashes">
+                    {% for message in messages %}
+                        <div class="flash-message"> {{ message}} </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+           
+    </main>
+
+    <footer>
+        <p>&copy; 2025 copyright reserved</p>
+    </footer>
+</body>
+</html>

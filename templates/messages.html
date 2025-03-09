@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %} Messages - My python web {% endblock %}
+
+
+{% block content %}
+
+ <h1>Contact Messages</h1>
+
+ {% if messages %}
+     <table class="message-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for message in messages %}
+            <tr>
+                <td>{{ message.id}}</td>
+                <td>{{ message.name}}</td>
+                <td>{{ message.email}}</td>
+                <td>{{ message.message}}</td>
+                <td>{{ message.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+ {% else %}
+    <p> No messages have been submitted yet.</p>
+
+{% endif %}
+
+ <p><a href="{{ url_for('contact.contact')}}"> Back to Contact Form</a></p>
+ {% endblock %}
